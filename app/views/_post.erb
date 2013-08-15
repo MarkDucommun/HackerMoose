@@ -1,0 +1,34 @@
+<% thumbs_down = '<img class="thumbs_down" src="http://png-1.findicons.com/files/icons/2652/gentleface/48/hand_contra_icon.png" border="0" vspace="3" hspace="2" >'
+  thumbs_up = '<img class="thumbs_up" src="http://png-5.findicons.com/files/icons/2232/wireframe_mono/48/hand_pro.png" border="0" vspace="3" hspace="2">' %>
+
+<div class="container">
+  <h2><a href="<%= @post.url %>"><%= @post.title %></a></h2>
+  <h3 class="votable" data-differentiator="Post" data-id='<%= @post.id %>'><a href="/user/<%= @post.user.id %>"><%= @post.user.name %></a>
+  <%= thumbs_up %> <%= thumbs_down %> <span><%= @post.votes %></span>
+  </h3>
+
+  
+  <form action="/post/<%= @post.id %>/comment" method="post">
+    <textarea class="comment" name="text"></textarea>
+    <button class="button" type="submit">Submit comment</button>
+  </form>
+
+
+  <ul>
+  <% @post.comments.each do |comment| %>
+    <div class="comment">
+      <h4 class="votable" data-id='<%= comment.id %>' data-differentiator='Comment'>
+        <a href="/user/<%= comment.user.id%>">
+          <%= comment.user.name %>
+        </a>
+        <%= thumbs_up %> 
+        <%= thumbs_down %> 
+        <span>
+          <%= comment.votes %>
+        </span>
+      </h4>
+      <p><%= comment.text %><p>
+    </div>
+  <% end %>
+  </ul>
+</div>

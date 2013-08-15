@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="not-left"> 
+
+  <% user = User.find(session[:user_id]) if session[:user_id] %>
+
+  <%= CssHelper.authentication(user) %>
+
+  <!-- write a helper method to replace display instance variable -->
+  <%= erb @display.to_sym %>
+  
+  </div>
+
+  <% links = [{display: "Create Post", link: "/new_post"}] %>
+
+  <%= CssHelper.nav_bar("Hacker Moose", links, "http://images.wikia.com/nickelodeonjr/images/5/5f/Moose_a_moose.jpg") %>
+</div>
+
+
+
+
+
+
+
+

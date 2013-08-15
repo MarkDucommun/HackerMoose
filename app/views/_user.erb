@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="has_bullet_points">
+    <h3><%= @user.name %> </h3>
+    <h4>Posts</h4>
+    <%= CssHelper.listinator(@user.posts, "title", "post", "id") %>
+    <h4>Comments</h4>
+    <%= CssHelper.listinator(@user.comments.order(:votes), "text", "post", "post.id") %>
+  </div>
+</div>
