@@ -18,10 +18,10 @@ $(document).ready(function() {
     });
   });
 
-  // $('.add_comment').click(function(event){
-  //   event.preventDefault();
-  //   $.post('/post/' + $('.votable').data('id') + '/comment', $('form').serialize, function(new_comment){
-  //     $('container').append(new_comment)
-  //   })
-  // });
+  $('.add_comment').click(function(event){
+    event.preventDefault();
+    $.post('/post/' + $('.votable').data('id') + '/comment', $('.add_comment').serialize(), function(new_comment){
+      $('.container').append(new_comment)
+    })
+  });
 });
