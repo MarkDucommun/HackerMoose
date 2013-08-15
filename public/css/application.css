@@ -234,7 +234,6 @@ a {
 }
 
 a:hover {
-  background-color: #ecf0f1;
   text-decoration: underline;
 }
 
@@ -253,6 +252,7 @@ a:visited {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   box-shadow: 0px 0px 20px 1px grey;
+  border-radius: 0.3em;
 }
 
 .has_bullet_points li {

@@ -2,13 +2,24 @@
   thumbs_up = '<img class="thumbs_up" src="http://png-5.findicons.com/files/icons/2232/wireframe_mono/48/hand_pro.png" border="0" vspace="3" hspace="2">' %>
 
 <div class="container">
-  <h2><a href="<%= @post.url %>"><%= @post.title %></a></h2>
-  <h3 class="votable" data-differentiator="Post" data-id='<%= @post.id %>'><a href="/user/<%= @post.user.id %>"><%= @post.user.name %></a>
-  <%= thumbs_up %> <%= thumbs_down %> <span><%= @post.votes %></span>
+  <h2>
+    <a href="<%= @post.url %>">
+      <%= @post.title %>
+    </a>
+  </h2>
+  <h3 class="votable" data-differentiator="Post" data-id='<%= @post.id %>'>
+    <a href="/user/<%= @post.user.id %>">
+      <%= @post.user.name %>
+    </a>
+    <%= thumbs_up %>
+    <%= thumbs_down %>
+    <span>
+      <%= @post.votes %>
+    </span>
   </h3>
 
   
-  <form action="/post/<%= @post.id %>/comment" method="post">
+  <form class="add_comment" action="/post/<%= @post.id %>/comment" method="post">
     <textarea class="comment" name="text"></textarea>
     <button class="button" type="submit">Submit comment</button>
   </form>

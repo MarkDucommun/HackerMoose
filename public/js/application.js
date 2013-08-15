@@ -1,11 +1,7 @@
 $(document).ready(function() {
   $('.thumbs_down').click(function(){
-
-    
     var diff = $(this).parent('.votable').data('differentiator')
     var id = $(this).parent('.votable').data('id')
-    console.log(diff);
-    console.log(id);
     var that = this
     $.post('/downvote/' + id, { differentiator: diff },function(votes){
       $(that).next('span').html(votes);
@@ -14,17 +10,18 @@ $(document).ready(function() {
   });
 
   $('.thumbs_up').click(function(){
-    
-    
     var diff = $(this).parent('.votable').data('differentiator')
     var id = $(this).parent('.votable').data('id')
-    console.log(diff);
-    console.log(id);
-    
+    var that = this
     $.post('/upvote/' + id, { differentiator: diff },function(votes){
-      console.log(votes)
-      console.log(this)
-      $(this).next('span').hide();
+      $(that).next().next().html(votes);
     });
   });
+
+  // $('.add_comment').click(function(event){
+  //   event.preventDefault();
+  //   $.post('/post/' + $('.votable').data('id') + '/comment', $('form').serialize, function(new_comment){
+  //     $('container').append(new_comment)
+  //   })
+  // });
 });

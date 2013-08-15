@@ -24,10 +24,20 @@ end
 
 post '/post/:id/comment' do
   if session[:user_id]
-    Post.find(params[:id]).comments.create(
+    puts params
+    comment = Post.find(params[:id]).comments.create(
       user: User.find(session[:user_id]),
-      text: params[:text])
-    redirect("/post/#{params[:id]}")
+      text: params[:text], votes: 0)
+    comment.save
+    if request.xhr?
+      puts comment.id
+      puts comment.text
+      puts comment.user
+      puts comment.votes
+      return AppHelper.new_comment(comment)
+    else
+      redirect("/post/#{params[:id]}")
+    end
   else
     redirect('/sign_up')
   end
